@@ -29,55 +29,58 @@ export class CalculadoraPage implements OnInit
   async calcular()
   {
     this.total = Math.round((1*this.dataSis+(2*this.dataDia))/3)
-      if (this.total >= 110 && this.total < 140)
-      {
-        const alert = await this.alertController.create
+    switch(true)
+    {
+      case (this.total >= 110 && this.total < 140):
+      const alert1 = await this.alertController.create
       ({
         header: 'Resultado',
         message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Crisis hipertensiva.",
         buttons: ['Aceptar']
       });
-      await alert.present();
-      }
-      else if (this.total >= 140 && this.total <= 300)
-      {
-        const alert = await this.alertController.create
-        ({
+      await alert1.present();
+      break;
+  
+      case (this.total >= 140 && this.total <= 300):
+      const alert2 = await this.alertController.create
+      ({
         header: 'Resultado',
         message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Emergencia hipertensiva.",
         buttons: ['Aceptar']
-        });
-        await alert.present();
-      }
-      else if (this.total < 110 && this.total > 40)
-      {
-        const alert = await this.alertController.create
-        ({
+      });
+      await alert2.present();
+      break;
+
+      case (this.total < 110 && this.total > 40):
+      const alert3 = await this.alertController.create
+      ({
         header: 'Resultado',
         message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Presión arterial normal.",
         buttons: ['Aceptar']
-        });
-        await alert.present();
-      }
-      else if (this.total < 40 && this.total >= 0 && this.total > 300)
-      {
-        const alert = await this.alertController.create
+      });
+      await alert3.present();
+      break;
+
+      case(this.total < 40 && this.total >= 0 && this.total > 300):
+      const alert4 = await this.alertController.create
         ({
         header: 'Error de aplicación',
         message: "Ingrese datos coherentes.",
         buttons: ['Reintentar']
         });
-        await alert.present();
-      }
-      else
-      {
-        const alert = await this.alertController.create
+      await alert4.present();
+      break;
+
+      default:
+      const alert5 = await this.alertController.create
         ({
         header: 'Error de aplicación',
         message: "Ingrese datos correctos.",
         buttons: ['Reintentar']
         });
-        await alert.present();
+      await alert5.present();
+      break;
+      
       }
-   }
-}
+    }
+  }

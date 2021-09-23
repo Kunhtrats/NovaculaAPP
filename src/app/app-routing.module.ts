@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'calculadora',
     loadChildren: () => import('./calculadora/calculadora.module').then( m => m.CalculadoraPageModule)
   },
+  {
+    path: 'imc',
+    loadChildren: () => import('./imc/imc.module').then( m => m.ImcPageModule)
+  },
 ];
 
 @NgModule({

@@ -18,4 +18,9 @@ export class HomePage
   {
     this.router.navigate(['/calculadora']);
   }
+
+  nextPageImc() 
+  {
+    this.router.navigate(['/imc']);
+  }
 }
