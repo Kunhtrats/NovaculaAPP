@@ -28,7 +28,7 @@ export class CalculadoraPage implements OnInit
 
   async calcular()
   {
-    if (this.dataSis === null && this.dataDia == null) 
+    if (this.dataSis <= 0 && this.dataDia <= 0) 
     {
       const alert = await this.alertController.create
       ({
@@ -39,7 +39,7 @@ export class CalculadoraPage implements OnInit
       await alert.present();
     
     }
-    
+
     else if (this.dataSis < this.dataDia) 
     {
       const alert = await this.alertController.create
@@ -64,12 +64,22 @@ export class CalculadoraPage implements OnInit
       });
       await alert.present();
       }
-      else if (this.total >= 140)
+      else if (this.total >= 140 && this.total <= 300)
       {
         const alert = await this.alertController.create
         ({
         header: 'Resultado',
         message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Emergencia hipertensiva.",
+        buttons: ['Aceptar']
+        });
+        await alert.present();
+      }
+      else
+      {
+        const alert = await this.alertController.create
+        ({
+        header: 'Resultado',
+        message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Presión arterial media",
         buttons: ['Aceptar']
         });
         await alert.present();
