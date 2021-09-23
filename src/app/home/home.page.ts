@@ -18,8 +18,4 @@ export class HomePage
   {
     this.router.navigate(['/calculadora']);
   }
-  nextPageCrono() 
-  {
-    this.router.navigate(['/cronometro']);
-  }
 }

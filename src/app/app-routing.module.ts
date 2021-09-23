@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'calculadora',
     loadChildren: () => import('./calculadora/calculadora.module').then( m => m.CalculadoraPageModule)
   },
-  {
-    path: 'cronometro',
-    loadChildren: () => import('./cronometro/cronometro.module').then( m => m.CronometroPageModule)
-  },
 ];
 
 @NgModule({
