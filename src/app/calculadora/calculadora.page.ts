@@ -28,32 +28,7 @@ export class CalculadoraPage implements OnInit
 
   async calcular()
   {
-    if (this.dataSis <= 0 && this.dataDia <= 0) 
-    {
-      const alert = await this.alertController.create
-      ({
-        header: 'Error del sistema',
-        message: 'Por favor ingrese los datos correspondientes.',
-        buttons: ['Reintentar']
-      });
-      await alert.present();
-    
-    }
-
-    else if (this.dataSis < this.dataDia) 
-    {
-      const alert = await this.alertController.create
-      ({
-        header: 'Error del sistema',
-        message: 'Por favor ingrese los datos correctamente.',
-        buttons: ['Reintentar']
-      });
-      await alert.present();
-    }
-
-    else 
-    {
-      this.total = Math.round((1*this.dataSis+(2*this.dataDia))/3)
+    this.total = Math.round((1*this.dataSis+(2*this.dataDia))/3)
       if (this.total >= 110 && this.total < 140)
       {
         const alert = await this.alertController.create
@@ -74,16 +49,35 @@ export class CalculadoraPage implements OnInit
         });
         await alert.present();
       }
-      else
+      else if (this.total < 110 && this.total > 40)
       {
         const alert = await this.alertController.create
         ({
         header: 'Resultado',
-        message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Presión arterial media",
+        message: "PAM: "+(this.total)+"<br>"+"<br>"+"ESTADO: Presión arterial normal.",
         buttons: ['Aceptar']
         });
         await alert.present();
       }
-    }
-  }
+      else if (this.total < 40 && this.total >= 0 && this.total > 300)
+      {
+        const alert = await this.alertController.create
+        ({
+        header: 'Error de aplicación',
+        message: "Ingrese datos coherentes.",
+        buttons: ['Reintentar']
+        });
+        await alert.present();
+      }
+      else
+      {
+        const alert = await this.alertController.create
+        ({
+        header: 'Error de aplicación',
+        message: "Ingrese datos correctos.",
+        buttons: ['Reintentar']
+        });
+        await alert.present();
+      }
+   }
 }

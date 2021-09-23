@@ -17,15 +17,15 @@
       <ion-col ion-item no-lines no-padding text-center col-2> 
         <ion-item lines="full" class="roundedInput">
           <ion-label position="floating">Presión sístolica</ion-label>
-          <ion-input clearInput min="1" step="1" maxlength="3" minlength="2" type="tel" [(ngModel)]="dataSis"></ion-input>
+          <ion-input   pattern="\d*" clearInput min="1" step="1" maxlength="3" minlength="2" type="tel" [(ngModel)]="dataSis"></ion-input>
         </ion-item>
         <br>
         <ion-item lines="full" class="roundedInput">
           <ion-label position="floating">Presión diastólica</ion-label>
-          <ion-input clearInput min="1" step="1" maxlength="3" minlength="2" type="tel" [(ngModel)]="dataDia"></ion-input>
+          <ion-input   pattern="\d*" clearInput min="1" step="1" maxlength="3" minlength="2" type="tel" [(ngModel)]="dataDia"></ion-input>
         </ion-item>
         <br>
-        <ion-button [disabled]="!dataSis || !dataDia" (click)="calcular()" type="submit" color="danger" expand="block" >Calcular</ion-button>
+        <ion-button [disabled]="!dataSis || !dataDia || 0" (click)="calcular()" type="submit" color="danger" expand="block" >Calcular</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
