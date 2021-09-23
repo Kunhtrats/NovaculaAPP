@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "blank",
+	"appId": "com.kane.novacula",
+	"appName": "Novacula",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }
