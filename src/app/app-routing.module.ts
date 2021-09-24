@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'imc',
     loadChildren: () => import('./imc/imc.module').then( m => m.ImcPageModule)
   },
+  {
+    path: 'dosis',
+    loadChildren: () => import('./dosis/dosis.module').then( m => m.DosisPageModule)
+  },
 ];
 
 @NgModule({

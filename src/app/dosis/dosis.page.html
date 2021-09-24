@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titleCSS">Calculadora de dosis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row no-padding justify-content-start align-items-start>
+      <ion-col ion-item no-lines no-padding text-center col-2> 
+        <ion-item lines="full" class="roundedInput">
+          <ion-label position="floating">Dosis recetada en MG</ion-label>
+          <ion-input  pattern="\d*" clearInput min="1" step="1" maxlength="3" minlength="1" type="tel" [(ngModel)]="dataReceta"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item lines="full" class="roundedInput">
+          <ion-label position="floating">Disponibilidad medicamento en ML</ion-label>
+          <ion-input pattern="\d*" clearInput min="1" step="1" maxlength="4" minlength="1" type="tel" [(ngModel)]="dataDispo"></ion-input>
+        </ion-item>
+        <br>
+        <!--
+        <ion-item lines="full" class="roundedInput">
+          <ion-label>Formato</ion-label>
+          <ion-select class="roundedInput">
+            <ion-select-option value="pastillas">Píldoras</ion-select-option>
+            <ion-select-option value="solucion">Solución</ion-select-option>
+          </ion-select>
+        </ion-item>
+        -->
+        <ion-item lines="full" class="roundedInput">
+          <ion-label position="floating">Forma de solución en MG</ion-label>
+          <ion-input pattern="\d*" clearInput min="1" step="1" maxlength="4" minlength="1" type="tel" [(ngModel)]="dataSolu"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button [disabled]="!dataReceta || !dataDispo || !dataSolu" (click)="calcular()" type="submit" color="danger" expand="block" >Calcular</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

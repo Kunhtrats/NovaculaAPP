@@ -23,4 +23,9 @@ export class HomePage
   {
     this.router.navigate(['/imc']);
   }
+
+  nextPageDosis() 
+  {
+    this.router.navigate(['/dosis']);
+  }
 }
