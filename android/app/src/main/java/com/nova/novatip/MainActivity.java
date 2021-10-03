@@ -1,4 +1,4 @@
-package com.kane.novacula;
+package com.nova.novatip;
 
 import com.getcapacitor.BridgeActivity;
 

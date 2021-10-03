@@ -104,64 +104,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 let ImcPage = class ImcPage {
-    constructor(alertController, router) {
+    constructor(alertController, router, toastController) {
         this.alertController = alertController;
         this.router = router;
+        this.toastController = toastController;
     }
     ngOnInit() {
     }
     calcularIMC() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function* () {
-            this.total = Math.round((this.dataPeso / (this.dataAltura / 100 * this.dataAltura / 100)));
+            this.total = ((this.dataPeso / (this.dataAltura / 100 * this.dataAltura / 100)));
+            const toast = yield this.toastController.create({
+                message: 'El resultado se encuentra en el recuadro cyan.',
+                duration: 2000
+            });
+            toast.present();
             switch (true) {
                 case (this.total < 18.4):
-                    const alert1 = yield this.alertController.create({
-                        header: 'Resultado',
-                        message: "IMC: " + (this.total) + "<br>" + "<br>" + "ESTADO: Peso bajo.",
-                        buttons: ['Aceptar']
-                    });
-                    yield alert1.present();
+                    this.estado = "Peso bajo";
                     break;
                 case (this.total >= 18.5 && this.total <= 24.9):
-                    const alert2 = yield this.alertController.create({
-                        header: 'Resultado',
-                        message: "IMC: " + (this.total) + "<br>" + "<br>" + "ESTADO: Peso normal.",
-                        buttons: ['Aceptar']
-                    });
-                    yield alert2.present();
+                    this.estado = "Peso normal";
                     break;
                 case (this.total >= 25 && this.total <= 29.9):
-                    const alert3 = yield this.alertController.create({
-                        header: 'Resultado',
-                        message: "IMC: " + (this.total) + "<br>" + "<br>" + "ESTADO: Sobrepeso.",
-                        buttons: ['Aceptar']
-                    });
-                    yield alert3.present();
+                    this.estado = "Sobrepeso";
                     break;
                 case (this.total >= 30 && this.total <= 34.9):
-                    const alert4 = yield this.alertController.create({
-                        header: 'Resultado',
-                        message: "IMC: " + (this.total) + "<br>" + "<br>" + "ESTADO: Obesidad grado 1.",
-                        buttons: ['Aceptar']
-                    });
-                    yield alert4.present();
+                    this.estado = "Obesidad grado 1";
                     break;
                 case (this.total >= 35 && this.total <= 39.9):
-                    const alert5 = yield this.alertController.create({
-                        header: 'Resultado',
-                        message: "IMC: " + (this.total) + "<br>" + "<br>" + "ESTADO: Obesidad grado 2.",
-                        buttons: ['Aceptar']
-                    });
-                    yield alert5.present();
+                    this.estado = "Obesidad grado 2";
                     break;
                 case (this.total >= 40):
-                    const alert6 = yield this.alertController.create({
-                        header: 'Resultado',
-                        message: "IMC: " + (this.total) + "<br>" + "<br>" + "ESTADO: Obesidad mórbida.",
-                        buttons: ['Aceptar']
-                    });
-                    yield alert6.present();
+                    this.estado = "Obesidad grado 3";
                     break;
             }
         });
@@ -169,7 +146,8 @@ let ImcPage = class ImcPage {
 };
 ImcPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.AlertController },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.ToastController }
 ];
 ImcPage = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_5__.Component)({
@@ -194,7 +172,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".titleCSS {\n  font-family: \"calibri\";\n  text-align: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n}\n\n.roundedInput {\n  --border-color: white;\n  --border-radius: 7px;\n  --border-width: 1px;\n  --box-shadow: 2px gray;\n  --highlight-height: 0;\n  color: #ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImltYy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFRSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QUFBRjs7QUFHQTtFQUNFLHFCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtFQUNBLHNCQUFBO0VBQ0EscUJBQUE7RUFDQSxjQUFBO0FBQUYiLCJmaWxlIjoiaW1jLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aXRsZUNTU1xyXG57XHJcbiAgZm9udC1mYW1pbHk6ICdjYWxpYnJpJztcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogMDtcclxuICBsZWZ0OiAwO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5yb3VuZGVkSW5wdXQge1xyXG4gIC0tYm9yZGVyLWNvbG9yOiB3aGl0ZTtcclxuICAtLWJvcmRlci1yYWRpdXM6IDdweDtcclxuICAtLWJvcmRlci13aWR0aDogMXB4O1xyXG4gIC0tYm94LXNoYWRvdzogMnB4IGdyYXk7XHJcbiAgLS1oaWdobGlnaHQtaGVpZ2h0OiAwO1xyXG4gIGNvbG9yOiAjZmZmZmZmO1xyXG4gfVxyXG4iXX0= */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (".titleCSS {\n  font-family: \"calibri\";\n  text-align: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n}\n\n.roundedInput {\n  --border-color: white;\n  --border-radius: 7px;\n  --border-width: 1px;\n  --box-shadow: 2px gray;\n  --highlight-height: 0;\n  color: #ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImltYy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFRSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QUFBRjs7QUFHQTtFQUVFLHFCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtFQUNBLHNCQUFBO0VBQ0EscUJBQUE7RUFDQSxjQUFBO0FBREYiLCJmaWxlIjoiaW1jLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aXRsZUNTU1xyXG57XHJcbiAgZm9udC1mYW1pbHk6ICdjYWxpYnJpJztcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogMDtcclxuICBsZWZ0OiAwO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5yb3VuZGVkSW5wdXQgXHJcbntcclxuICAtLWJvcmRlci1jb2xvcjogd2hpdGU7XHJcbiAgLS1ib3JkZXItcmFkaXVzOiA3cHg7XHJcbiAgLS1ib3JkZXItd2lkdGg6IDFweDtcclxuICAtLWJveC1zaGFkb3c6IDJweCBncmF5O1xyXG4gIC0taGlnaGxpZ2h0LWhlaWdodDogMDtcclxuICBjb2xvcjogI2ZmZmZmZjtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -209,7 +187,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title class=\"titleCSS\">Calculadora de IMC</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid no-padding>\n    <ion-row no-padding justify-content-start align-items-start>\n      <ion-col ion-item no-lines no-padding text-center col-2> \n        <ion-item lines=\"full\" class=\"roundedInput\">\n          <ion-label position=\"floating\">Peso en kg</ion-label>\n          <ion-input pattern=\"\\d*\" clearInput min=\"1\" step=\"1\" maxlength=\"3\" minlength=\"2\" type=\"tel\" [(ngModel)]=\"dataPeso\"></ion-input>\n        </ion-item>\n        <br>\n        <ion-item lines=\"full\" class=\"roundedInput\">\n          <ion-label position=\"floating\">Altura en cm</ion-label>\n          <ion-input pattern=\"\\d*\" clearInput min=\"1\" step=\"1\" maxlength=\"3\" minlength=\"2\" type=\"tel\" [(ngModel)]=\"dataAltura\"></ion-input>\n        </ion-item>\n        <br>\n        <ion-button [disabled]=\"!dataPeso || !dataAltura\" (click)=\"calcularIMC()\" type=\"submit\" color=\"danger\" expand=\"block\" >Calcular</ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-header>\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title class=\"titleCSS\">Calculadora de IMC</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-grid>\r\n    <ion-row>\r\n      <ion-col size=\"12\"> \r\n        <ion-item lines=\"full\" class=\"roundedInput\">\r\n          <ion-label position=\"floating\">Peso en Kg</ion-label>\r\n          <ion-input pattern=\"\\d*\" clearInput min=\"1\" step=\"0.01\" maxlength=\"4\" minlength=\"2\" type=\"tel\" [(ngModel)]=\"dataPeso\"></ion-input>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col size=\"12\"> \r\n        <ion-item lines=\"full\" class=\"roundedInput\">\r\n          <ion-label position=\"floating\">Altura en Cm</ion-label>\r\n          <ion-input pattern=\"\\d*\" clearInput min=\"1\" step=\"1\" maxlength=\"3\" minlength=\"2\" type=\"tel\" [(ngModel)]=\"dataAltura\"></ion-input>\r\n        </ion-item>\r\n        <br>\r\n        <ion-button class=\"roundedInput\"[disabled]=\"!dataPeso || !dataAltura\" (click)=\"calcularIMC()\" type=\"submit\" color=\"danger\" expand=\"block\" >Calcular</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color= \"secondary\">\r\n          <ion-label floating>\r\n            IMC: {{this.total | number : '1.1-1'}}\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color= \"secondary\">\r\n          <ion-label>\r\n            {{this.estado}}\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"success\">\r\n          <ion-label>\r\n            Normal\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"success\">\r\n          <ion-label style=\"font-weight: bold;\">\r\n            Entre 18 y 24\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"warning\">\r\n          <ion-label >\r\n            Sobrepeso\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"warning\">\r\n          <ion-label style=\"font-weight: bold;\">\r\n            Entre 25 y 29\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"danger\">\r\n          <ion-label>\r\n            Obesidad grado 1\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"danger\">\r\n          <ion-label style=\"font-weight: bold;\">\r\n            Entre 30 y 34\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"danger\">\r\n          <ion-label>\r\n            Obesidad grado 2\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"danger\">\r\n          <ion-label style=\"font-weight: bold;\">\r\n            Entre 35 y 39\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"danger\">\r\n          <ion-label>\r\n            Obesidad grado 3\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n      <ion-col size=\"6\">\r\n        <ion-item class=\"roundedInput\" color=\"danger\">\r\n          <ion-label style=\"font-weight: bold;\">\r\n            Más de 40\r\n          </ion-label>\r\n        </ion-item>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n</ion-content>");
 
 /***/ })
 

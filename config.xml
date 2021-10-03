@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.kane.novacula" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Novacula</name>
+<widget id="com.nova.novatip" version="1.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Novatip</name>
     <description>Calculator for nursing activities.</description>
     <author email="gerritvbart@gmail.com" href="http://ionicframework.com/">Kane Temblay</author>
     <content src="index.html" />

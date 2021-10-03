@@ -61,6 +61,10 @@ const routes = [
         path: 'dosis',
         loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_dosis_dosis_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./dosis/dosis.module */ 3380)).then(m => m.DosisPageModule)
     },
+    {
+        path: 'cronometro',
+        loadChildren: () => __webpack_require__.e(/*! import() */ "src_app_cronometro_cronometro_module_ts").then(__webpack_require__.bind(__webpack_require__, /*! ./cronometro/cronometro.module */ 1187)).then(m => m.CronometroPageModule)
+    },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -468,7 +472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>\n");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n");
 
 /***/ })
 

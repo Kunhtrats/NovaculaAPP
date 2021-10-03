@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'dosis',
     loadChildren: () => import('./dosis/dosis.module').then( m => m.DosisPageModule)
   },
+  {
+    path: 'cronometro',
+    loadChildren: () => import('./cronometro/cronometro.module').then( m => m.CronometroPageModule)
+  },
+
 ];
 
 @NgModule({

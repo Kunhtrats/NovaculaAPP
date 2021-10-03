@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AlertController} from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component
 ({
@@ -15,6 +16,7 @@ export class ImcPage implements OnInit
   (
     private alertController: AlertController,
     private router          : Router,
+    public toastController: ToastController
   ) 
   { }
 
@@ -24,72 +26,43 @@ export class ImcPage implements OnInit
   public dataAltura: number;
   public dataPeso: number;
   public total: number;
+  public estado: string;
 
   async calcularIMC()
 
   {
-    this.total = Math.round((this.dataPeso/(this.dataAltura/100*this.dataAltura/100)))
+    this.total = ((this.dataPeso/(this.dataAltura/100*this.dataAltura/100)))
+    const toast = await this.toastController.create
+    ({
+      message: 'El resultado se encuentra en el recuadro cyan.',
+      duration: 2000
+    });
+    toast.present();
     switch(true)
     {
       case (this.total < 18.4):
-      const alert1 = await this.alertController.create
-      ({
-        header: 'Resultado',
-        message: "IMC: "+(this.total)+"<br>"+"<br>"+"ESTADO: Peso bajo.",
-        buttons: ['Aceptar']
-      });
-      await alert1.present();
+        this.estado = "Peso bajo"
       break;
   
       case (this.total >= 18.5 && this.total <= 24.9):
-      const alert2 = await this.alertController.create
-      ({
-        header: 'Resultado',
-        message: "IMC: "+(this.total)+"<br>"+"<br>"+"ESTADO: Peso normal.",
-        buttons: ['Aceptar']
-      });
-      await alert2.present();
+        this.estado = "Peso normal"
       break;
 
       case (this.total >= 25 && this.total <= 29.9):
-      const alert3 = await this.alertController.create
-      ({
-        header: 'Resultado',
-        message: "IMC: "+(this.total)+"<br>"+"<br>"+"ESTADO: Sobrepeso.",
-        buttons: ['Aceptar']
-      });
-      await alert3.present();
+        this.estado = "Sobrepeso"
       break;
 
       case (this.total >= 30 && this.total <= 34.9):
-        const alert4 = await this.alertController.create
-        ({
-          header: 'Resultado',
-          message: "IMC: "+(this.total)+"<br>"+"<br>"+"ESTADO: Obesidad grado 1.",
-          buttons: ['Aceptar']
-        });
-        await alert4.present();
-        break;
+        this.estado = "Obesidad grado 1"
+      break;
 
       case (this.total >= 35 && this.total <= 39.9):
-        const alert5 = await this.alertController.create
-        ({
-          header: 'Resultado',
-          message: "IMC: "+(this.total)+"<br>"+"<br>"+"ESTADO: Obesidad grado 2.",
-          buttons: ['Aceptar']
-        });
-        await alert5.present();
-        break;
+        this.estado = "Obesidad grado 2"
+      break;
       
       case (this.total >= 40):
-        const alert6 = await this.alertController.create
-        ({
-          header: 'Resultado',
-          message: "IMC: "+(this.total)+"<br>"+"<br>"+"ESTADO: Obesidad mórbida.",
-          buttons: ['Aceptar']
-        });
-        await alert6.present();
-        break;
+        this.estado = "Obesidad grado 3"
+      break;
   
       
       }

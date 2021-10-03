@@ -14,18 +14,29 @@ export class HomePage
   {
   }
   
-  nextPageCalculator() 
-  {
-    this.router.navigate(['/calculadora']);
-  }
-
   nextPageImc() 
   {
     this.router.navigate(['/imc']);
+  }
+
+  nextPagePam() 
+  {
+    this.router.navigate(['/calculadora']);
   }
 
   nextPageDosis() 
   {
     this.router.navigate(['/dosis']);
   }
+
+  minsalpage()
+  { 
+    window.open('https://www.minsal.cl/', '_system');
+  }
+
+  heartpage()
+  { 
+    window.open('https://www.heart.org/', '_system');
+  }
+
 }

@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.kane.novacula',
-  appName: 'Novacula',
+  appId: 'com.nova.novatip',
+  appName: 'Novatip',
   webDir: 'www',
   bundledWebRuntime: false
 };

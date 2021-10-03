@@ -1233,14 +1233,12 @@ sub {
 .ion-align-items-baseline {
   align-items: baseline !important;
 }
-ion-toolbar {
+ion-header, ion-content {
+  --ion-background-color:f48fb1;
   --background: #6b34c4;
 }
-ion-content {
-  --ion-background-color:#642ac4;
-}
-ion-header {
-  --ion-background-color:#642ac4;
+ion-toolbar, .contentColor {
+  --ion-background-color:#232323;
 }
 ion-tab-button, ion-label, ion-title, ion-back-button {
   color: #ffffff;

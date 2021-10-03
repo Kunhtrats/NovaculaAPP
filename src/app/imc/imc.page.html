@@ -8,20 +8,122 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid no-padding>
-    <ion-row no-padding justify-content-start align-items-start>
-      <ion-col ion-item no-lines no-padding text-center col-2> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12"> 
         <ion-item lines="full" class="roundedInput">
-          <ion-label position="floating">Peso en kg</ion-label>
-          <ion-input pattern="\d*" clearInput min="1" step="1" maxlength="3" minlength="2" type="tel" [(ngModel)]="dataPeso"></ion-input>
+          <ion-label position="floating">Peso en Kg</ion-label>
+          <ion-input pattern="\d*" clearInput min="1" step="0.01" maxlength="4" minlength="2" type="tel" [(ngModel)]="dataPeso"></ion-input>
         </ion-item>
-        <br>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12"> 
         <ion-item lines="full" class="roundedInput">
-          <ion-label position="floating">Altura en cm</ion-label>
+          <ion-label position="floating">Altura en Cm</ion-label>
           <ion-input pattern="\d*" clearInput min="1" step="1" maxlength="3" minlength="2" type="tel" [(ngModel)]="dataAltura"></ion-input>
         </ion-item>
         <br>
-        <ion-button [disabled]="!dataPeso || !dataAltura" (click)="calcularIMC()" type="submit" color="danger" expand="block" >Calcular</ion-button>
+        <ion-button class="roundedInput"[disabled]="!dataPeso || !dataAltura" (click)="calcularIMC()" type="submit" color="danger" expand="block" >Calcular</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color= "secondary">
+          <ion-label floating>
+            IMC: {{this.total | number : '1.1-1'}}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color= "secondary">
+          <ion-label>
+            {{this.estado}}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="success">
+          <ion-label>
+            Normal
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="success">
+          <ion-label style="font-weight: bold;">
+            Entre 18 y 24
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="warning">
+          <ion-label >
+            Sobrepeso
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="warning">
+          <ion-label style="font-weight: bold;">
+            Entre 25 y 29
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="danger">
+          <ion-label>
+            Obesidad grado 1
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="danger">
+          <ion-label style="font-weight: bold;">
+            Entre 30 y 34
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="danger">
+          <ion-label>
+            Obesidad grado 2
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="danger">
+          <ion-label style="font-weight: bold;">
+            Entre 35 y 39
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="danger">
+          <ion-label>
+            Obesidad grado 3
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="roundedInput" color="danger">
+          <ion-label style="font-weight: bold;">
+            Más de 40
+          </ion-label>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
